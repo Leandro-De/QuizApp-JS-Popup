@@ -45,7 +45,15 @@ body{
 
 .InfoBox.activeInfo,
 .quizContainer.activeQuiz,
-.modalContainer.activeModal{
+.modalContainer.activeModal,
+.result-box.activeResult{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modalContainer.activeModal2{
+    border: 2px solid red;
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);

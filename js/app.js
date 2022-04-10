@@ -19,8 +19,19 @@ continueBtn.onclick = () => {
 
 let queCount = 0;
 let queNumb = 1;
+let userScore = 0;
 
 const nextBtn = document.querySelector('.modalBtn button');
+
+const resultBox = document.querySelector('.result-box');
+const sendBtn = resultBox.querySelector('.buttons .submit');
+
+// const data= document.querySelector('.data-container');
+// const exitBtn = data.querySelector('.buttons .exit-btn');
+
+// exitBtn.onclick = () => {
+//     window.location.reload();
+// }
 
 nextBtn.onclick = () => {
     if(queCount < questions.length -1){
@@ -29,8 +40,11 @@ nextBtn.onclick = () => {
         showQuestions(queCount);
         queCounter(queNumb);
         modal.classList.remove("activeModal");
+        modal.classList.remove("activeModal2");
+        modal.classList.remove("activeModal3");
     }else{
         console.log('Completed')
+        showResult();
     }
 
 }
@@ -62,12 +76,12 @@ function optionSelected(answer){
     let userAns = answer.textContent;
     let correct = questions[queCount].abswer;
     if(userAns == correct){
+        userScore +=1;
          modal.classList.add("activeModal");
     }else{
+        modal.classList.add("activeModal2");
         console.log('mal');
     }
-
-
 }
 
 function queCounter(index){
@@ -76,4 +90,29 @@ function queCounter(index){
     let totalQues = `<span><p>${index}</p>of<p>${questions.length}</p>Questions</span>`;
     
     counterFooter.innerHTML = totalQues;
+}
+
+function showResult(){
+    infoBox.classList.remove("activeInfo");
+    quizBox.classList.remove("activeQuiz");
+    modal.classList.remove("activeModal");
+    modal.classList.remove("activeModal2");
+    modal.classList.remove("activeModal3");
+    resultBox.classList.add("activeResult");
+
+    const scoreText = resultBox.querySelector(".score-text");
+
+    if(userScore > 3){
+        let scoreTag = `<span>You got <p>${userScore}</p> out of <p>${questions.length}</p> </span>`;
+        scoreText.innerHTML=scoreTag;
+    }
+    else if(userScore > 2){
+        let scoreTag = `<span>You got <p>${userScore}</p> out of <p>${questions.length}</p> </span>`;
+        scoreText.innerHTML=scoreTag;
+    }
+
+    else{
+        let scoreTag = `<span>You got <p>${userScore}</p> out of <p>${questions.length}</p> </span>`;
+        scoreText.innerHTML=scoreTag;
+    }
 }
