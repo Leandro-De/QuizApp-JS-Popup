@@ -12,12 +12,20 @@ body{
 }
 
 .StartBtn,
-.InfoBox{
+.InfoBox,
+.quizContainer,
+.modalContainer,
+.result-box
+{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0px 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all ease 0.3s;
 }
+
 
 /* Start Btn Quiz */
 
@@ -33,15 +41,94 @@ body{
     cursor: pointer;
 }
 
+/* js action */
+
+.InfoBox.activeInfo,
+.quizContainer.activeQuiz,
+.modalContainer.activeModal{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
 /* Info Box */
 
 .InfoBox{
     width: 600px;
     border-radius: 5px;
     background-color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
 }
 
-.InfoTitle{
+.quizContainer{
+    width: 600px;
+    border-radius: 5px;
+    background-color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+.result-box{
+    width: 600px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.modalContainer{
+    
+    width: 1000px;
+    border-radius: 5px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.59);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.6px);
+    -webkit-backdrop-filter: blur(5.6px);
+    border: 1px solid rgba(255, 255, 255, 0.23);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+    
+}
+
+.modal{
+    margin-top: 50px;
+}
+
+.modalInfo.modal{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modalBtn button{
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+    outline: none;
+    border: 1px solid #ff8300;
+    background-color: #fff;
+    color: #ff8300;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.modalBtn button:hover{
+    transform: scale(1.2);
+    background-color: #ff8300;
+    color: #fff;
+}
+
+
+
+.InfoTitle,
+.QuestionTitle{
     height: 60px;
     width: 100%;
     border-bottom: 1px solid lightgray;
@@ -52,8 +139,101 @@ body{
     font-weight: bold;
 }
 
-.Info{
+.Info,
+.options{
     margin: 5px 0;
     font-size: 17px;
     padding: 10px;
 }
+
+.InfoBox .buttons{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 35px;
+    border-top: 1px solid lightgray;
+}
+
+.buttons button{
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+    outline: none;
+    border: 1px solid #ff8300;
+    background-color: #fff;
+    color: #ff8300;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.buttons button:hover{
+    transform: scale(1.2);
+    background-color: #ff8300;
+    color: #fff;
+}
+
+.quizContainer section{
+    padding: 20px 30px;
+}
+
+.OptionsContainer{
+    padding: 20px 0;
+    display: block;
+}
+
+.options{
+    background: #fff;
+    border: 1px solid #ff8300;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.options:last-child{
+    margin-bottom: 0px;
+}
+
+.options:hover{
+    border: 1px solid #0f3250;
+    transform: scale(1.05);
+}
+
+.quizContainer footer{
+    height: 60px;
+    width: 100%;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+}
+
+.quizContainer footer .total-que span{
+    display: flex;
+    user-select: none;
+}
+
+footer .total-que span p{
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+.result-box{
+    padding: 25px 30px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+/* Add more styles */
